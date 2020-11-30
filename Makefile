@@ -19,7 +19,7 @@ $(CORE): $(MAIN) $(OBJS) Makefile
 	$(CXX) $(CFLAGS) -o $(CORE) $(OBJS) $(LIBS)
 
 $(CORE_LIB): $(LIB_IFCE) $(OBJS) Makefile
-	$(CXX) $(CFLAGS) -o $(CORE) $(OBJS) $(LIBS)
+	ar cr $(CORE_LIB) $(LIB_IFCE) $(OBJS) 
 clean:
 	rm -f $(CORE)
 	rm -f *.o
