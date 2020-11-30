@@ -6,15 +6,20 @@ CFLAGS += -g
 LIBS    = 
 
 CORE = rdspi
-OBJS = cmd.o main.o pi2c.o rpi_pin.o si4703.o rds.o cio.o cli.o
+CORE_LIB := $(CORE)_lib.a
+MAIN = main.o
+LIB_IFCE = rdspi.o
+OBJS = cmd.o pi2c.o rpi_pin.o si4703.o rds.o cio.o cli.o
 #SRC =  cmd.c main.c pi2c.c rpi_pin.c si4703.c rds.c cio.c cli.c
 #HFILES = Makefile pi2c.h rpi_pin.h si4703.h rds.h cmd.h cli.h
 
 all: $(CORE)
 
-$(CORE): $(OBJS) Makefile
+$(CORE): $(MAIN) $(OBJS) Makefile
 	$(CXX) $(CFLAGS) -o $(CORE) $(OBJS) $(LIBS)
 
+$(CORE_LIB): $(LIB_IFCE) $(OBJS) Makefile
+	$(CXX) $(CFLAGS) -o $(CORE) $(OBJS) $(LIBS)
 clean:
 	rm -f $(CORE)
 	rm -f *.o
