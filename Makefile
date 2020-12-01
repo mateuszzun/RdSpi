@@ -6,7 +6,7 @@ CFLAGS += -g
 LIBS    = 
 
 CORE = rdspi
-CORE_LIB := $(CORE)_lib.a
+CORE_LIB := lib$(CORE).a
 MAIN = main.o
 LIB_IFCE = rdspi.o
 OBJS = cmd.o pi2c.o rpi_pin.o si4703.o rds.o cio.o cli.o
@@ -22,7 +22,7 @@ $(CORE_LIB): $(LIB_IFCE) $(OBJS) Makefile
 	ar cr $(CORE_LIB) $(LIB_IFCE) $(OBJS) 
 clean:
 	rm -f $(CORE)
-	rm -f *.o
+	rm -f *.o *.a
 
 #%.o: %.c $(HFILES)
 %.o: %.c

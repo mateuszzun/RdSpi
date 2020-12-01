@@ -25,6 +25,7 @@
 #include "pi2c.h"
 #include "rpi_pin.h"
 #include "si4703.h"
+#include "rdspi.h"
 
 cmd_t commands[] = {
 	{ "reset", "reset radio module", cmd_reset },
